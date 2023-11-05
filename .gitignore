@@ -1,0 +1,8 @@
+# only allow c and c++
+
+*.exe
+*.json
+!.gitignore
+tempCodeRunnerFile.c
+soal-praktikum-daspro
+Latihan
