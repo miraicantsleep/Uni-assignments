@@ -6,8 +6,8 @@ struct mahasiswa
 {
     char nama[30];
     char NRP[20];
-    char angkatan[6];
-    char umur[5];
+    char angkatan[10];
+    char umur[10];
     char asal[50];
 };
 
@@ -26,14 +26,14 @@ void find(struct mahasiswa data[], int size, char check[])
     for (int i = 0; i < size; i++)
     {
         if (strstr(data[i].nama, check) != NULL ||
-            strstr(data[i].NRP, check) != NULL ||
-            strstr(data[i].angkatan, check) != NULL ||
-            strstr(data[i].umur, check) != NULL ||
+            strcmp(data[i].NRP, check) == 0 ||
+            strcmp(data[i].angkatan, check) == 0 ||
+            strcmp(data[i].umur, check) == 0 ||
             strstr(data[i].asal, check) != NULL)
         {
             found = true;
             printData(data[i], i);
-            break;
+            // break;
         }
     }
     if (!found)
