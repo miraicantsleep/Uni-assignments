@@ -4,11 +4,11 @@
 
 struct mahasiswa
 {
-    char nama[30];
-    char NRP[20];
-    char angkatan[10];
-    char umur[10];
-    char asal[50];
+    char nama[50];
+    char NRP[50];
+    char angkatan[50];
+    char umur[50];
+    char asal[80];
 };
 
 void printData(struct mahasiswa index, int i)
@@ -26,9 +26,9 @@ void find(struct mahasiswa data[], int size, char check[])
     for (int i = 0; i < size; i++)
     {
         if (strstr(data[i].nama, check) != NULL ||
-            strcmp(data[i].NRP, check) == 0 ||
-            strcmp(data[i].angkatan, check) == 0 ||
-            strcmp(data[i].umur, check) == 0 ||
+            strstr(data[i].NRP, check) != NULL ||
+            strstr(data[i].angkatan, check) != NULL ||
+            strstr(data[i].umur, check) != NULL ||
             strstr(data[i].asal, check) != NULL)
         {
             found = true;
@@ -38,7 +38,7 @@ void find(struct mahasiswa data[], int size, char check[])
     }
     if (!found)
     {
-        printf("DATA TIDAK DITEMUKAN\n");
+        printf("DATA TIDAK DITEMUKAN\n\n");
     }
 }
 
@@ -60,15 +60,15 @@ void swapVal(char *ptr1, char *ptr2)
 int main()
 {
     int N;
-    scanf("%d", &N);
+    scanf("%d\n", &N);
     struct mahasiswa structArr[N];
     for (int i = 0; i < N; i++)
     {
-        scanf(" %[^\n]", structArr[i].nama);
-        scanf(" %[^\n]", structArr[i].NRP);
-        scanf(" %[^\n]", structArr[i].angkatan);
-        scanf(" %[^\n]", structArr[i].asal);
-        scanf(" %[^\n]", structArr[i].umur);
+        gets(structArr[i].nama);
+        gets(structArr[i].NRP);
+        gets(structArr[i].angkatan);
+        gets(structArr[i].asal);
+        gets(structArr[i].umur);
     }
 
     int command;
@@ -88,7 +88,7 @@ int main()
         {
             printf("===== HASIL PENCARIAN =====\n");
             char str[100];
-            scanf(" %[^\n]", str);
+            scanf(" %s", str);
             find(structArr, N, str);
         }
         else if (command == 2)
@@ -105,7 +105,7 @@ int main()
         else if (command == 3)
         {
             char swapThis[10];
-            scanf("%s", swapThis);
+            scanf(" %s", swapThis);
             if (strcmp(swapThis, "nama") == 0)
             {
                 int index1;
