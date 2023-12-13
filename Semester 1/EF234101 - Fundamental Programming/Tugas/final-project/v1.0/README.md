@@ -1,0 +1,1 @@
+Just mostly basic features, can create read update delete, CRUD satisified intinya.

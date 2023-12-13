@@ -8,6 +8,7 @@ int main()
     char first[15];
     char middle[60];
     FILE *Inputfile = fopen("input.txt", "r");
+    
     while (fgets(input, sizeof(input), Inputfile) != NULL)
     {
         int length = strlen(input);
