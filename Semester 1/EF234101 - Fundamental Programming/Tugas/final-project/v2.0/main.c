@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <conio.h>
-#include <ctype.h>
 
 #define MAX_SIZE 100
 #define ANSI_COLOR_RED "\x1b[31m"
@@ -63,7 +62,7 @@ void clearInputBuffer();
 
 void readFromFile(dataContainer *container)
 {
-    FILE *database = fopen("data.txt", "r");
+    FILE *database = fopen("data.dat", "r");
     if (database == NULL)
     {
         printf("File database tidak bisa dibuka. Masukkan data terlebih dahulu.\n");
@@ -86,7 +85,7 @@ void readFromFile(dataContainer *container)
 
 void saveToFile(dataContainer *container)
 {
-    FILE *database = fopen("data.txt", "w");
+    FILE *database = fopen("data.dat", "w");
     if (database == NULL)
     {
         printf("Error opening file for writing.\n");
@@ -237,8 +236,8 @@ void insertData(dataContainer *myContainer)
                 {
                     /* code */
                 }
-                return;
                 printStartMenu(0);
+                return;
             }
         }
 
@@ -414,7 +413,7 @@ void updateData(dataContainer *myContainer)
     {
         printf("Nama kategori sekarang -> %s\n", currentKategori->namaKategori);
         printf("Masukkan nama kategori baru: ");
-        scanf("%[^\n]", currentKategori->namaKategori);
+        scanf("%99[^\n]", currentKategori->namaKategori);
         clearInputBuffer();
     }
     else if (input == 2)
@@ -564,6 +563,7 @@ void deleteData(dataContainer *myContainer)
     {
     case 1:
         // Delete entire category
+        // geser setiap kategori naik 1 index
         for (int i = saveIndexKategori; i < myContainer->indexKategori - 1; i++)
         {
             myContainer->category[i] = myContainer->category[i + 1];
@@ -603,6 +603,7 @@ void deleteData(dataContainer *myContainer)
         }
 
         // Delete the item
+        // geser produk setelah index produk yang dihapus menjadi +1 nya
         for (int i = saveProdukIndex; i < currentKategori->indexProduk - 1; i++)
         {
             currentKategori->products[i] = currentKategori->products[i + 1];
