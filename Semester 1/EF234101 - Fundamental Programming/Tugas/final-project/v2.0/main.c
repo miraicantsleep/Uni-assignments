@@ -29,7 +29,7 @@ typedef struct
 
 void clearScreen()
 {
-    system("cls");
+    system("clear");
 }
 
 void banner()

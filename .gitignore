@@ -2,8 +2,10 @@
 
 *.exe
 *.json
+*.bin
 !.gitignore
 tempCodeRunnerFile.c
 soal-praktikum-daspro
 Latihan
 \.cph
+Semester 2/EF234201 - Data Structure/ktp-enjoyer/.gdb_history
